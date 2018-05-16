@@ -21,7 +21,6 @@ object MessageProducer {
     while (true) {
       val key = s"$counter"
       val value = s" thread=1 message=$counter"
-      producer.beginTransaction()
       val record = new ProducerRecord[String, String](kafkaConfig.topic, key, value)
       producer.send(record)
       Thread.sleep(100)
